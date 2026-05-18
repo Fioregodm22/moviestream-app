@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>MovieStream</title></head>
+<body>
+  <h1>Películas</h1>
+  <a href="/movies/new">+ Nueva Película</a> | <a href="/actors">Ver Actores</a>
+  <table border="1">
+    <tr>
+      <th>Título</th><th>Año</th><th>Género</th><th>Budget</th><th>Studio</th><th>Acciones</th>
+    </tr>
+    <% movies.forEach(movie => { %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.year %></td>
+      <td><%= movie.genre %></td>
+      <td><%= movie.budget %></td>
+      <td><%= movie.studio %></td>
+      <td>
+        <a href="/movies/<%= movie._id %>/edit">Editar</a>
+        <form action="/movies/<%= movie._id %>/delete" method="POST" style="display:inline">
+          <button type="submit">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

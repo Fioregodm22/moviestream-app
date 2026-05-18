@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Actores</title></head>
+<body>
+  <h1>Actores</h1>
+  <a href="/actors/new">+ Nuevo Actor</a> | <a href="/movies">Ver Películas</a>
+  <table border="1">
+    <tr>
+      <th>Nombre</th><th>Nacionalidad</th><th>Año Nacimiento</th><th>Acciones</th>
+    </tr>
+    <% actors.forEach(actor => { %>
+    <tr>
+      <td><%= actor.name %></td>
+      <td><%= actor.nationality %></td>
+      <td><%= actor.birthYear %></td>
+      <td>
+        <form action="/actors/<%= actor._id %>/delete" method="POST" style="display:inline">
+          <button type="submit">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

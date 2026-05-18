@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Nueva Película</title></head>
+<body>
+  <h1>Nueva Película</h1>
+  <form action="/movies" method="POST">
+    <input name="title" placeholder="Título" required><br>
+    <input name="year" placeholder="Año" type="number" required><br>
+    <input name="genre" placeholder="Género" required><br>
+    <input name="budget" placeholder="Budget" type="number"><br>
+    <input name="studio" placeholder="Studio"><br>
+    <input name="runtime" placeholder="Runtime (min)" type="number"><br>
+    <select name="actors" multiple>
+      <% actors.forEach(actor => { %>
+        <option value="<%= actor._id %>"><%= actor.name %></option>
+      <% }) %>
+    </select><br>
+    <button type="submit">Crear</button>
+  </form>
+  <a href="/movies">Cancelar</a>
+</body>
+</html>

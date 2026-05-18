@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Editar Película</title></head>
+<body>
+  <h1>Editar: <%= movie.title %></h1>
+  <form action="/movies/<%= movie._id %>" method="POST">
+    <input name="title" value="<%= movie.title %>" required><br>
+    <input name="year" value="<%= movie.year %>" type="number" required><br>
+    <input name="genre" value="<%= movie.genre %>" required><br>
+    <input name="budget" value="<%= movie.budget %>" type="number"><br>
+    <input name="studio" value="<%= movie.studio %>"><br>
+    <input name="runtime" value="<%= movie.runtime %>" type="number"><br>
+    <select name="actors" multiple>
+      <% actors.forEach(actor => { %>
+        <option value="<%= actor._id %>" 
+          <%= movie.actors.includes(actor._id.toString()) ? 'selected' : '' %>>
+          <%= actor.name %>
+        </option>
+      <% }) %>
+    </select><br>
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="/movies">Cancelar</a>
+</body>
+</html>
